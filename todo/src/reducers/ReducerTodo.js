@@ -1,32 +1,23 @@
-export const initialState = {
-    item: 'Learn about reducers',
-    completed: false,
-    id: 3892987589  
-  };
+  
+import React from 'react'
 
-
-
-export const ReducerTodo = (state, action) => {
-    switch (action.type) {
-      case "UPDATE_TODO":
-        if (!action.payload) {
-          return {
-            ...state,
-            editing: !state.editing
-          };
-        } else {
-          return {
-            ...state,
-            title: action.payload,
-            editing: !state.editing
-          }
+const reducer = (state, action) => {
+    console.log("Inside reducer")
+    switch(action.type) {
+        case "ADD_TODO": {
+            return [...state, action.payload]
         }
-          case "TOGGLE_EDITING":
-        return {
-          ...state,
-          editing: !state.editing
-        };
-          default:
-          return state;
-          };
-        };
+
+        default: return state;
+    }
+}
+
+const initialState = [
+    {
+        item: 'Learn about reducers',
+        completed: false,
+        id: 3892987389
+    }
+];
+
+export {reducer, initialState};
